@@ -1,0 +1,31 @@
+<p>table works!</p>
+<mat-form-field>
+    <input (keyup)= "applyFilter($any($event.target).value)" matInput placeholder="Filter" >
+</mat-form-field>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="icon">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> avatar icon </mat-header-cell>
+      <mat-cell  *matCellDef="let element"> {{element.icon}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef> age </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.age}} </mat-cell>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions] = "[2,6,10]" showFirstLastButtons></mat-paginator>

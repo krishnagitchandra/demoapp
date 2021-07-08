@@ -1,0 +1,38 @@
+<!-- <div class="container-fluid">
+    <h1>authorization form</h1>
+    <form #userForm ="ngForm">
+        <div class="form-group">
+            <label>name</label>
+            <input type="text" class="form-control" name="username" [(ngModel)] = "userModel.name"
+             required #uname ="ngModel" [class.is-invalid] ="uname.invalid && uname.touched">
+             <small class="text-danger" [class.d-none] = "uname.valid || uname.untouched">name is required</small>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>email</label>
+            <input type="email" class="form-control" name="email" [(ngModel)] ="userModel.email">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>age</label>
+            <input type="tel" class="form-control" name="age" [(ngModel)] = "userModel.age">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>country</label>
+            <input type="text" class="form-control" name="country" [(ngModel)] = "userModel.country">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>phone</label>
+            <input type="tel" class="form-control" name="phone" [(ngModel)] = "userModel.phone" 
+            #mob = "ngModel" required pattern="^\d{10}$" [class.is-invalid] = "mob.invalid && mob.touched" >
+            <div *ngIf="mob.errors && (mob.invalid || mob.touched)">
+                <small class="text-danger" *ngIf="mob.errors.required && mob.touched">phone cant be empty</small>
+                <small class="text-danger" *ngIf="mob.errors.pattern">must be of 10 digits</small>
+            </div>
+        </div>
+        <br>
+        <button [disabled] ="userForm.form.invalid" class="btn btn-primary" type="submit">SUBMIT</button>
+    </form>
+</div> -->

@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <h1>authorization form</h1>
+    <form [formGroup] = "registrationForm">
+        <div class="form-group">
+            <label>name</label>
+            <input [class.is-invalid] ="registrationForm.get('name')!.invalid && registrationForm.get('name')!.touched" formControlName = "name" type="text" class="form-control">
+            <div *ngIf = "registrationForm.get('name')!.invalid && registrationForm.get('name')!.touched">
+                <small class="text-danger" *ngIf ="registrationForm.get('name')!.errors?.maxlength">atmost 10 letters</small>
+                <small class="text-danger" *ngIf ="registrationForm.get('name')!.errors?.required">username is required</small>                
+            </div>
+            <!-- <small class="text-danger" [class.d-none] = "registrationForm.get('name')!.valid || registrationForm.get('name')!.untouched">username is required</small> -->
+        </div>
+        <br>
+        <div class="form-group">
+            <label>email</label>
+            <input formControlName = "email" type="email" class="form-control">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>age</label>
+            <input [class.is-invalid] ="registrationForm.get('age')!.invalid && registrationForm.get('age')!.touched" formControlName = "age" type="tel" class="form-control">
+            <div *ngIf = "registrationForm.get('age')!.invalid && registrationForm.get('age')!.touched">
+                <small class="text-danger" *ngIf ="registrationForm.get('age')!.errors?.maxlength">atmost 2 digits</small>
+                <small class="text-danger" *ngIf ="registrationForm.get('age')!.errors?.pattern">only numbers</small>
+
+            </div>
+            <!-- <small class="text-danger" [class.d-none] = "registrationForm.get('age')!.valid">ATMOST 2 digits</small> -->
+        </div>
+        <br>
+        <div class="form-group">
+            <label>country</label>
+            <input [class.is-invalid] ="registrationForm.get('country')!.invalid && registrationForm.get('country')!.touched" formControlName = "country" type="text" class="form-control" >
+            <div *ngIf = "registrationForm.get('country')!.invalid && registrationForm.get('country')!.touched">
+                <small class="text-danger" *ngIf ="registrationForm.get('country')!.errors?.maxlength">atmost 10 letters</small>
+                <small class="text-danger" *ngIf ="registrationForm.get('country')!.errors?.pattern">only alphabets</small>
+
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>phone</label>
+            <input [class.is-invalid] ="registrationForm.get('phone')!.invalid && registrationForm.get('phone')!.touched" formControlName = "phone" type="tel" class="form-control">
+            <div *ngIf = "registrationForm.get('phone')!.invalid && registrationForm.get('phone')!.touched"[class.is-invalid]>
+                <small class="text-danger" *ngIf ="registrationForm.get('phone')!.errors?.maxlength">atmost 10 digits</small>
+                <small class="text-danger" *ngIf ="registrationForm.get('phone')!.errors?.pattern">only numbers</small>
+
+            </div>
+        </div>
+        <br>
+        <button (click) = "popup = true " type="submit" class="btn btn-secondary ml-2">SUBMIT</button>
+        <br><br>
+        <div class="overlay" *ngIf = "popup">
+        <div class="popup">
+            <div class="form-group">
+                <label>OTP</label>
+                <input [class.is-invalid] ="registrationForm.get('otp')!.invalid && registrationForm.get('otp')!.touched" formControlName = "otp" type="number" class="form-control">
+                <small class="text-danger" *ngIf ="registrationForm.get('otp')!.errors?.required &&  registrationForm.get('otp')!.touched">required</small>
+            </div> <br>
+            <button class="btn btn-primary" (click)="btnClick()" [disabled]="registrationForm.invalid">proceed</button><br>
+            <countdown #cd1 [config]="{ leftTime: 5, format: 'm:s'}" (event)="onTimerFinished($event)"></countdown><br>
+            <button [disabled] = "!click">resend</button>
+            <a class="close" (click)="popup = false">&times;</a>
+        </div>
+        
+        <!-- <div class="overlay" *ngIf = "butt">
+            <div class="butt"> 
+                <button>proceed</button>
+                <a class="close" (click)="butt = false"></a>
+            </div>
+        </div>     -->
+    </div>
+    </form>
+    <!-- {{registrationForm.value | json}} -->
+    <br>
+
+    <!-- <countdown #cd1 [config]="{ leftTime: 300, format: 'm:s' , demand: true }"></countdown> -->
+    <!-- <countdown #countdown [config]="{leftTime: 5} "(event)="onTimerFinished($event)" >$!m!:$!s!</countdown> -->
+    
+
+
+</div>
+
