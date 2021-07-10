@@ -9,7 +9,7 @@ import {Router} from '@angular/router'
   templateUrl: './reactivereg.component.html',
   styleUrls: ['./reactivereg.component.css']
 })
-export class ReactiveregComponent implements OnInit,OnDestroy {
+export class ReactiveregComponent implements OnInit {
 
   // registrationForm = new FormGroup({
   //   name : new FormControl('krishna'),
@@ -20,9 +20,9 @@ export class ReactiveregComponent implements OnInit,OnDestroy {
   // });
 
   constructor(private fb : FormBuilder,private router: Router) { }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngOnDestroy(): void {
+  //   throw new Error('Method not implemented.');
+  // }
    
 
   btnClick= function () {
